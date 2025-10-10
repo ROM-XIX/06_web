@@ -1,0 +1,17 @@
+[tool.black]
+line-length = 119
+target-version = ["py311", "py312"]  # adaptez à votre version
+include = "\\.pyi?$"
+exclude = """
+/(\n  \\.venv\n  | \\.git\n  | __pycache__\n  | build\n  | dist\n)/
+"""
+
+[tool.isort]
+profile = "black"
+line_length = 119
+py_version = 311
+skip = [
+  ".venv",
+  "build",
+  "dist",
+]
