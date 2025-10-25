@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>JustStreamIt</title>
+  <!-- déclaration pour récupèrer correctement l'affichage pour travailler des MediaQueries  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="JustStreamIt – Catalogue de films basé sur l'API OCMovies (local)" />
+  <!-- CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style_.css" rel="stylesheet"/>
+</head>
+
+<body class="tbd">
+  
+  <header>
+    <div class="bloc_title">     
+      <p><img src="../images/logo.png" id="title_logo"/></p>
+      <h1 class="titre" id="title_page">Vidéos à la Demande</h1>
+    </div>
+      <nav class="menu_rapide"></nav>
+  </header>
+
+  <main>
+    <!-- Meilleur Film -->
+    <section id="s_meilleur_film" class="titre_section">
+      <h2>Meilleur film</h2> 
+      <!-- Conteneur de best movi -->
+      <div id="s_meilleur_film_" class="conteneur_best_movi">
+        <!-- Image à gauche -->
+        <div class="box_title">
+          <img
+            src="https://picsum.photos/400/550?random=1"
+            class=""
+            alt="Affiche du film"
+          />
+        </div>
+        <!-- Contenu à droite -->
+        <div class="box_title">
+          <!-- Titre du film -->
+          <h2 class="">The Best Movi</h2>
+          <!-- Description du film -->
+          <p class="">
+            Jeff “The Dude” Lebowski, pris pour un millionnaire du même nom, veut obtenir réparation
+            pour son tapis abîmé et embarque ses amis de bowling dans l’aventure.
+          </p>
+          <!-- Bouton qui ouvre le modal -->
+          <div class="">
+            <!-- Button trigger modal -->
+            <button 
+              type="button" 
+              class="btn btn-primary" 
+              data-bs-toggle="modal" 
+              data-bs-target="#exampleModal"
+            >
+              Détails
+            </button>
+          </div>
+        </div>
+
+      </div> 
+    </section>
+    <!-- Catégorie 1 - Liste des films les mieux notés -->
+    <section id="s_film_best_note" class="titre_section">
+      <h2>Film les mieux notés</h2> 
+      <div class="conteneur">
+        <div class="box">🐸 Élément 1
+          <img
+            src="https://picsum.photos/400/550?random=2684"
+            class=""
+            alt="Affiche du film"
+          />
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Détails</button>       
+        </div>
+        <div class="box ">🦊 Élément 2
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Détails</button> 
+        </div>
+        <div class="box box_2">🦄 Élément 3
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Détails</button> 
+        </div>
+        <div class="box box_2">🐶 Élément 4
+          <img
+            src="https://picsum.photos/400/550?random=284"
+            class=""
+            alt="Affiche du film"
+          />
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Détails</button> 
+        </div>
+        <div class="box box_3">🐨 Élément 5
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Détails</button> 
+        </div>
+        <div class="box box_3">🐒 Élément 6
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Détails</button> 
+        </div>
+      </div> 
+      <button id="btn-plus1" class="btn btn1 btn-primary">Afficher plus</button>
+      <button id="btn-plus2" class="btn btn2 btn-primary">Afficher plus</button>  
+    </section>
+    <!-- Catégorie 2 Sci-Fi -->
+    <section id="s_film_sci_fi" class="titre_section">
+      <h2>Sci-Fi les mieux notés</h2> 
+      <div class="conteneur">
+        <div class="box">🐸 Élément 1</div>
+        <div class="box">🦊 Élément 2</div>
+        <div class="box">🦄 Élément 3</div>
+        <div class="box">🐶 Élément 4</div>
+        <div class="box">🐨 Élément 5</div>
+        <div class="box">🐒 Élément 6</div>
+      </div>
+    </section>
+    <!-- Catégorie 3 Fantasy -->
+    <section id="s_film_fantasy" class="titre_section">
+      <h2>Fantasy les mieux notés</h2> 
+      <div class="conteneur">
+        <div class="box">🐸 Élément 1</div>
+        <div class="box">🦊 Élément 2</div>
+        <div class="box">🦄 Élément 3</div>
+        <div class="box">🐶 Élément 4</div>
+        <div class="box">🐨 Élément 5</div>
+        <div class="box">🐒 Élément 6</div>
+      </div>
+    </section>
+    <!-- Catégorie 4 Catégorie dynamique -->
+    <section id="s_dynamique" class="titre_section">
+      <h2>Films dynamique les mieux notés</h2> 
+      <div class="conteneur">
+        <div class="box">🐸 Élément 1</div>
+        <div class="box">🦊 Élément 2</div>
+        <div class="box">🦄 Élément 3</div>
+        <div class="box">🐶 Élément 4</div>
+        <div class="box">🐨 Élément 5</div>
+        <div class="box">🐒 Élément 6</div>
+      </div>
+    </section>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- titre du modal -->
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Détails</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="annee">🐸 Élément 1</div>
+            <div class="type">🦊 Élément 2</div>
+            <div class="age">🦄 Élément 3</div>
+            <div class="duree">🐶 Élément 4</div>
+            <div class="pays">🐨 Élément 5</div>
+            <img
+              src="https://picsum.photos/400/550?random=1"
+              class=""
+              alt="Affiche du film"
+            />
+            <div class="imdb_score">🐒 Élément 6</div>
+            <div class="box_office">🦊 Élément 7</div>
+            <div class="director">🦄 Élément 8</div>
+            <div class="summary">🐶 Élément 9</div>
+            <div class="actors">🐨 Élément 10</div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Détails</button>
+
+  <footer class="tbd">
+  </footer>
+  <!-- Bootstrap 5 JS (Popper inclus) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script_.js" defer></script>
+
+</body>
+</html>

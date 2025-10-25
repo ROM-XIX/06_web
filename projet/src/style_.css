@@ -1,0 +1,139 @@
+/* Disposition génral */
+/* ++++++++++++++++++ */
+body {
+  background-color:#1C1C1C; 
+  color:#DAA520;
+  font-family:monospace;
+  /* background:linear-gradient(to left,#331c17,#563226); 
+  color:#ac6b26;
+  height: 100vh; pour que le dégradé prenne toute la hauteur
+  margin: 0; enlever les marges par défaut */
+}
+
+/* gestion de l'entête */
+/* +++++++++++++++++++ */
+.bloc_title {
+  display:flex;
+  /* background: radial-gradient(circle,#f6cd26,#ac6b26,#563226,#331c17); */
+  background-color: #DAA520;
+  flex-direction: row;
+  justify-content: start;
+  flex-wrap: wrap; 
+  gap:1rem; 
+  grid-template-columns:repeat(3fr,3fr);
+  align-items: center;    
+}
+#title_page {
+  font-family: monospace;
+  letter-spacing: -0.01em;
+  color: #2050DA;
+  font-weight: 400;
+  font-size: 5em;
+  background-size: cover;
+}
+/* #title_logo{
+
+} */
+
+.btn {
+  border-radius: 1rem;
+  margin: 1rem auto;  
+}
+
+/* Gestion des éléments box  */
+/* +++++++++++++++++++++++++ */
+.box {
+  border:3px solid #DAA520; 
+  text-align: center;
+  border-radius: 2em;
+  height:auto;
+  display:inline 
+}
+.box_title {
+  height: auto;
+}
+
+/* gestion de la grid d'affichage du meilleur film*/
+/* +++++++++++++++++++++++++++++++++++++++++ */
+
+/* Base : 1 colonne pour smartphone*/
+.conteneur_best_movi { 
+  /* width:100%;  */
+  height:auto; 
+  /* display:block;  */
+  /* border-radius:.25rem; */
+  display:grid; 
+  gap:1.5rem; 
+  grid-template-columns:1fr;
+  border:3px solid #DAA520; 
+  border-radius:2rem; 
+  padding:1rem;
+  /* max-width:800px;  */
+  margin:2rem auto; 
+  align-items:center;
+}
+
+/* Base : 1 colonne pour smartphone*/
+.conteneur_best_movi img { 
+  display:grid; 
+  width:50%;
+  grid-template-columns:repeat(1fr);
+  border-radius:1.5rem;    
+}
+.conteneur_best_movi h2{ 
+  font-weight:700;
+  font-size:1.8rem;
+  margin:0 0 .8rem;
+}
+
+
+/* gestion de la grid d'affichage de chaque catégorie*/
+/* +++++++++++++++++++++++++++++++++++++++++ */
+
+/* Base : 1 colonne pour smartphone*/
+.conteneur { 
+    display:grid; 
+    gap:1rem; 
+    grid-template-columns:repeat(1,1fr); 
+}
+
+/* Gestion de l'affichage dynamique en fonction du device */
+/* affichage pour smartphone */
+@media (max-width:767.98px) {
+  .box_2{display:none;}
+  .box_3{display:none;}
+  .btn2 {
+    display: none;
+  }
+  .btn1 {
+    display: block;
+    margin: 1rem auto;
+  }
+}
+
+/* petit côté (inline) ≥ 768px gestion des tablette*/
+@media (min-width: 768px) and (max-width:1279.98px) {
+  .conteneur { grid-template-columns: repeat(2, 1fr); }
+  .conteneur_best_movi { grid-template-columns: 1fr 2fr; }
+  .box_3{display:none;}
+  .btn1 {
+    display: none;
+  }  
+  .btn2 {
+    display: block;
+    margin: 1rem auto;
+  }
+}
+/* petit côté (inline) ≥ 1280px gestion des PC*/
+@media (min-width: 1280px) {
+  .conteneur { grid-template-columns: repeat(3, 1fr); }
+  .conteneur_best_movi { grid-template-columns: 1fr 2fr; }
+  .btn1 {
+    display: none;
+  }
+  .btn2 {
+    display: none;
+  }
+
+}
+
