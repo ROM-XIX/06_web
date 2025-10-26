@@ -10,9 +10,8 @@ body {
   margin: 0; enlever les marges par défaut */
 }
 
-.h2{
-  justify-items: center;  /* centre chaque box horizontalement */
-  align-items: center;    /* centre verticalement dans la cellule */
+h2 {
+  text-align:center;
 }
 
 /* gestion de l'entête */
