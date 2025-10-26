@@ -10,6 +10,11 @@ body {
   margin: 0; enlever les marges par défaut */
 }
 
+.h2{
+  justify-items: center;  /* centre chaque box horizontalement */
+  align-items: center;    /* centre verticalement dans la cellule */
+}
+
 /* gestion de l'entête */
 /* +++++++++++++++++++ */
 .bloc_title {
@@ -31,27 +36,64 @@ body {
   font-size: 5em;
   background-size: cover;
 }
+
+.box_title {
+  height: auto;
+}
+
 /* #title_logo{
 
 } */
 
+
+/* Gestion des boutons */
 .btn {
-  border-radius: 1rem;
+  border-radius: 0.75rem;
+  background-color: #DAA520;
+  color: #1C1C1C;
+  border: none;
+  padding: 0.4rem 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
   margin: 1rem auto;  
 }
+
+.btn:hover {
+  background-color: #2050DA;
+}
+
 
 /* Gestion des éléments box  */
 /* +++++++++++++++++++++++++ */
 .box {
   border:3px solid #DAA520; 
   text-align: center;
-  border-radius: 2em;
+  border-radius: 1.5em;
   height:auto;
-  display:inline 
+  width:75%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  position: relative;           /* nécessaire pour positionner le bandeau */
+  overflow: hidden;             /* cache ce qui dépasse de la carte */
+  /* border-radius: 1rem; */
+  border: 2px solid #DAA520;
+
 }
-.box_title {
-  height: auto;
+
+.box img {
+  /* border-radius:1.5rem; */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            /* remplit la box sans déformation */
+  display: block;
+  border-radius: 1em;
+  transition: transform 0.4s ease;
 }
+
+
+
 
 /* gestion de la grid d'affichage du meilleur film*/
 /* +++++++++++++++++++++++++++++++++++++++++ */
@@ -94,7 +136,9 @@ body {
 .conteneur { 
     display:grid; 
     gap:1rem; 
-    grid-template-columns:repeat(1,1fr); 
+    grid-template-columns:repeat(1,1fr);
+  justify-items: center;  /* centre chaque box horizontalement */
+  align-items: center;    /* centre verticalement dans la cellule */
 }
 
 /* Gestion de l'affichage dynamique en fonction du device */
@@ -135,5 +179,37 @@ body {
     display: none;
   }
 
+}
+
+/* gestion de l'affichage des miniature de filmes */
+
+/* Zoom léger au survol */
+.box:hover img {
+  transform: scale(1.20);
+}
+
+/* Bandeau translucide en bas */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 33%;                  /* ≈ un tiers inférieur */
+  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Titre du film */
+.titre-film {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: center;
 }
 
