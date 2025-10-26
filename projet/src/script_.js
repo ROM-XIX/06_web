@@ -1,4 +1,4 @@
-
+// Bouton afficher plus/moins pour les smartphone
 document.addEventListener('DOMContentLoaded', function() {
     // On récupère le bouton btn-plus1 
     const btn = document.getElementById('btn-plus1');
@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Bouton affichage plus/moins pour les tablette
 document.addEventListener('DOMContentLoaded', function() {
     const btn = document.getElementById('btn-plus2');
     const hiddenBoxes = document.querySelectorAll('.box_3');
@@ -38,4 +39,20 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.textContent = expanded ? 'Afficher moins' : 'Afficher plus';
         });
     }
+});
+
+// Gestion du menu déroulant
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.dropdown-item');
+
+  items.forEach(item => {
+    item.addEventListener('click', e => {
+      e.preventDefault();
+      const genre = item.dataset.genre;
+      const btn = document.getElementById('dropdownGenre');
+      btn.textContent = 'Genre : ' + item.textContent; // change le texte du bouton
+      console.log('Genre sélectionné :', genre);
+      // 👉 ici tu peux ensuite appeler ta fonction pour filtrer les films
+    });
+  });
 });
