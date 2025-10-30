@@ -25,7 +25,7 @@ h2 {
   justify-content: start;
   flex-wrap: wrap; 
   gap:1rem; 
-  grid-template-columns:repeat(3fr,3fr);
+  grid-template-columns:repeat(1fr 3fr);
   align-items: center;    
 }
 #title_page {
@@ -39,6 +39,8 @@ h2 {
 
 .box_title {
   height: auto;
+  align-items: center;
+  justify-items: center;  /* centre chaque box horizontalement */
 }
 
 /* #title_logo{
@@ -102,16 +104,13 @@ h2 {
 .conteneur_best_movi { 
   /* width:100%;  */
   height:auto; 
-  /* display:block;  */
-  /* border-radius:.25rem; */
   display:grid; 
   gap:1.5rem; 
   grid-template-columns:1fr;
   border:3px solid #DAA520; 
   border-radius:2rem; 
   padding:1rem;
-  /* max-width:800px;  */
-  margin:2rem auto; 
+  margin:2rem 5rem; /*c'est 2rem top/bottom et 5rem haut/bas */
   align-items:center;
 }
 
@@ -239,4 +238,15 @@ h2 {
 .dropdown-item:hover {
   background-color: #DAA520;
   color: #1C1C1C;
+}
+
+/* Titre section autre */
+/* +++++++++++++++++++ */
+
+.bloc_title_section_autre {
+  display: flex; /* Active Flexbox pour organiser les éléments internes (titre + bouton). */
+  flex-direction:row; /* Les éléments internes (titre, bouton, etc.) sont empilés horizontalement. */
+  justify-content:center; /* Aligne le contenu au centre verticalement */
+  align-items: center; /* Centre les éléments horizontalement */
+  padding: 3rem;
 }
