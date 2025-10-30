@@ -12,6 +12,7 @@ body {
 
 h2 {
   text-align:center;
+  padding: 3em;
 }
 
 /* gestion de l'entête */
@@ -189,18 +190,18 @@ h2 {
 
 /* Bandeau translucide en bas */
 .overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 33%;                  /* ≈ un tiers inférieur */
-  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  position: absolute; /*position par rapport à son parent*/
+  bottom: 0; /*bords du bandeau collé au bas*/
+  left: 0; /*bords du bandeau collé à gauche*/
+  right: 0; /*bords du bandeau collé à droite*/
+  height: 33%; /* hauteur du bandeau de ≈ un tiers en partant du bas */
+  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3)); /*banbeau translucide avec dégradé du bas vers le haut*/
+  display: flex; /* Active Flexbox pour organiser les éléments internes (titre + bouton). */
+  flex-direction: column; /* Les éléments internes (titre, bouton, etc.) sont empilés verticalement. */
+  justify-content: flex-end; /* Aligne le contenu en bas du bandeau */
+  align-items: center; /* Centre les éléments horizontalement */
   padding: 1rem;
-  box-sizing: border-box;
+  box-sizing: border-box; /*inclue le padding et la bordure dans les calculs de taille de l élément*/
 }
 
 /* Titre du film */
