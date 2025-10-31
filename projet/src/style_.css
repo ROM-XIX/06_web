@@ -15,7 +15,9 @@ h2 {
   padding: 3em;
 }
 
-/* gestion de l'entête */
+
+
+/* gestion de l'entête du site */
 /* +++++++++++++++++++ */
 .bloc_title {
   display:flex;
@@ -37,10 +39,11 @@ h2 {
   background-size: cover;
 }
 
+/* gestion de Best Movi */
 .box_title {
   height: auto;
   align-items: center;
-  justify-items: center;  /* centre chaque box horizontalement */
+  /* justify-items: center;  centre chaque box horizontalement */
 }
 
 /* #title_logo{
@@ -105,12 +108,12 @@ h2 {
   /* width:100%;  */
   height:auto; 
   display:grid; 
-  gap:1.5rem; 
+  gap:1rem; 
   grid-template-columns:1fr;
   border:3px solid #DAA520; 
   border-radius:2rem; 
   padding:1rem;
-  margin:2rem 5rem; /*c'est 2rem top/bottom et 5rem haut/bas */
+  margin:2rem auto; /*c'est 2rem top/bottom et auto gauche droite */
   align-items:center;
 }
 
@@ -180,7 +183,7 @@ h2 {
 
 }
 
-/* gestion de l'affichage des miniature de filmes */
+/* gestion de l'affichage des miniatures de filmes */
 
 /* Zoom léger au survol */
 .box:hover img {
