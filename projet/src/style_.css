@@ -17,6 +17,7 @@ h2 {
 
 
 
+
 /* gestion de l'entête du site */
 /* +++++++++++++++++++ */
 .bloc_title {
@@ -27,7 +28,7 @@ h2 {
   justify-content: start;
   flex-wrap: wrap; 
   gap:1rem; 
-  grid-template-columns:repeat(1fr 3fr);
+  grid-template-columns:1fr 3fr;
   align-items: center;    
 }
 #title_page {
@@ -121,7 +122,7 @@ h2 {
 .conteneur_best_movi img { 
   display:grid; 
   width:50%;
-  grid-template-columns:repeat(1fr);
+  grid-template-columns:1fr;
   border-radius:1.5rem;    
 }
 .conteneur_best_movi h2{ 
@@ -155,6 +156,9 @@ h2 {
     display: block;
     margin: 1rem auto;
   }
+  .btn_details{
+    display:none;
+  }
 }
 
 /* petit côté (inline) ≥ 768px gestion des tablette*/
@@ -168,6 +172,16 @@ h2 {
   .btn2 {
     display: block;
     margin: 1rem auto;
+  }
+  .modal_conteneur_1 {
+    flex-direction: column;
+  }
+  .box_modal_img {
+    justify-content: center;
+  }
+
+  .box_modal_img img {
+    max-width: 240px;
   }
 }
 /* petit côté (inline) ≥ 1280px gestion des PC*/
@@ -184,6 +198,7 @@ h2 {
 }
 
 /* gestion de l'affichage des miniatures de filmes */
+/* +++++++++++++++++++++++++++++++++++++++++++++++ */
 
 /* Zoom léger au survol */
 .box:hover img {
@@ -253,3 +268,70 @@ h2 {
   align-items: center; /* Centre les éléments horizontalement */
   padding: 3rem;
 }
+
+/* Mise en page Modal  */
+/* +++++++++++++++++++ */
+
+/* fond modal */
+.modal-content {
+  background-color:#1C1C1C; 
+  color:#DAA520;
+  font-family:monospace;  
+}
+
+/* conteneur 2 colonnes (infos + affiche) */
+.modal_conteneur_1 { 
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+/* colonne gauche */
+.box_modal_1 {
+  flex: 2;               /* prend plus de place que l'image */
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* colonne droite = affiche */
+.box_modal_img {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* chaque ligne d'info */
+.box_modal_1 .info-line {
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.4rem;
+  font-size: 0.9rem;
+}
+
+/* image dans le modal */
+.box_modal_img img {
+  max-width: 180px;      /* limite la largeur dans le modal */
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  border: 2px solid #DAA520;
+}
+
+/* bloc du bas : résumé + acteurs */
+.modal_conteneur_2 {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modal_conteneur_2 .summary {
+  line-height: 1.4; /*la hauteur du text hauteur de la ligne (font+interligne)*/
+}
+
+.modal_conteneur_2 .actors {
+  font-style: italic;
+  font-size: 0.9rem; /*la taille du text chaque lettre est identique en taille ex 20pixels*/
+}
+
