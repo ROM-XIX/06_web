@@ -21,7 +21,7 @@ function displayBestMovieHeader(movie) {
     // si l'image échoue à charger → image de secours
     imgEl.onerror = function () {
       this.onerror = null; // évite une boucle infinie si la 2e image échoue aussi
-      this.src = '../images/erreur_404.webp';
+      this.src = '../images/erreur_404.jpg';
     };
   }
 
@@ -59,7 +59,7 @@ function fillBestMovieModal(movie) {
     // si l'image échoue à charger → image de secours
     imgEl.onerror = function () {
       this.onerror = null; // évite une boucle infinie si la 2e image échoue aussi
-      this.src = '../images/erreur_404.webp';
+      this.src = '../images/erreur_404.jpg';
     };
   }
   if (imdbEl) imdbEl.textContent = `Score IMDB : ${movie.imdb_score ?? 'N/A'}`;
@@ -74,11 +74,11 @@ function fillBestMovieModal(movie) {
 // 3. Générer une liste de films dans une section
 //    (utilisé pour : meilleurs films, sci-fi, fantasy, dynamique)
 // =====================================================
-function renderMoviesInSection(sectionId, movies) {
+function addMoviToElement(sectionId, movies) {
   const section = document.getElementById(sectionId);
   if (!section) return;
 
-  const container = section.querySelector('.conteneur');
+  const container = section.querySelector('.conteneur'); // on selection les classe conteneur dans la balise section.
   if (!container) return;
 
   container.innerHTML = '';
@@ -101,7 +101,7 @@ function renderMoviesInSection(sectionId, movies) {
 
     // si l'image ne charge pas image par défaut
     img.onerror = function () {
-      this.src = '../images/erreur_404.webp';
+      this.src = '../images/erreur_404.jpg';
     };
 
     const overlay = document.createElement('div');
@@ -113,7 +113,7 @@ function renderMoviesInSection(sectionId, movies) {
 
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'btn btn-primary';
+    btn.className = 'btn btn-primary btn_details';
     btn.textContent = 'Détails';
     btn.setAttribute('data-bs-toggle', 'modal');
     btn.setAttribute('data-bs-target', '#exampleModal');
@@ -178,7 +178,7 @@ async function fetchAllGenres() {
 // =====================================================
 // 5. Boutons "Afficher plus / moins" (par section)
 // =====================================================
-function initShowMoreButtons() {
+function initButtons() {
   // smartphone
   document.querySelectorAll('.btn-plus1').forEach(btn => {
     const section = btn.closest('section');
@@ -198,7 +198,7 @@ function initShowMoreButtons() {
     const section = btn.closest('section');
     let open = false;
     btn.addEventListener('click', () => {
-      const hidden = section.querySelectorAll('.box_3');
+      const hidden = section.querySelectorAll('.box_3'); // recupère toute les éléments box_3
       open = !open;
       hidden.forEach(el => {
         el.style.display = open ? 'block' : 'none';
@@ -219,11 +219,11 @@ async function initGenreDropdowns() {
 
   // 2) on cible TOUS les menus dropdown de la page
   // (dans ton HTML ils sont dans les sections dynamiques)
-  const dropdowns = document.querySelectorAll('.dropdown'); // ou plus précis si tu veux
+  const dropdowns = document.querySelectorAll('.dropdown');
 
   dropdowns.forEach(drop => {
-    const menu = drop.querySelector('.dropdown-menu');
-    const button = drop.querySelector('button.dropdown-toggle');
+    const menu = drop.querySelector('.dropdown-menu'); // récupère un élément dropdown-menu
+    const button = drop.querySelector('button.dropdown-toggle'); // récupère un élément dropdown-menu
     if (!menu || !button) return;
 
     // on vide d'abord le menu (pour enlever les "Action", "Comédie" en dur)
@@ -238,7 +238,7 @@ async function initGenreDropdowns() {
       a.textContent = genreName;
       a.dataset.genre = genreName;
 
-      // clic sur un genre → on recharge seulement la section du dropdown
+      // clic sur un genre on recharge seulement la section du dropdown
       a.addEventListener('click', async (e) => {
         e.preventDefault();
 
@@ -254,7 +254,7 @@ async function initGenreDropdowns() {
         // on va chercher les 6 meilleurs films de ce genre
         const movies = await fetchBestByGenre(genreName, 6);
         // et on remplace les cartes de CETTE section uniquement
-        renderMoviesInSection(sectionId, movies);
+        addMoviToElement(sectionId, movies);
       });
 
       li.appendChild(a);
@@ -267,6 +267,7 @@ async function initGenreDropdowns() {
 // =====================================================
 // 7. Lancement global
 // =====================================================
+//  addEventListenet - au chargement du Dom
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     // 1) Meilleurs films globaux
@@ -303,19 +304,19 @@ document.addEventListener('DOMContentLoaded', async () => {
       nextMovies = nextMovies.slice(0, 6);
 
       // d. on les affiche dans la section "Film les mieux notés"
-      renderMoviesInSection('s_film_best_note', nextMovies);
+      addMoviToElement('s_film_best_note', nextMovies);
     }
 
     // 2) Sci-Fi (par défaut)
     const sciFiMovies = await fetchBestByGenre('Sci-Fi', 6);
-    renderMoviesInSection('s_film_sci_fi', sciFiMovies);
+    addMoviToElement('s_film_sci_fi', sciFiMovies);
 
     // 3) Fantasy (par défaut)
     const fantasyMovies = await fetchBestByGenre('Fantasy', 6);
-    renderMoviesInSection('s_film_fantasy', fantasyMovies);
+    addMoviToElement('s_film_fantasy', fantasyMovies);
 
     // 4) Boutons afficher +/-
-    initShowMoreButtons();
+    initButtons();
 
     // 5) Menus déroulants dynamiques
     await initGenreDropdowns();
@@ -324,3 +325,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Erreur lors du chargement des films :', err);
   }
 });
+
+addEventListener()

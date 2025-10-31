@@ -50,7 +50,7 @@
             <!-- Button trigger modal -->
             <button 
               type="button" 
-              class="btn btn-primary" 
+              class="btn btn-primary btn_details" 
               data-bs-toggle="modal" 
               data-bs-target="#exampleModal"
               id="best-movie-btn"
@@ -412,18 +412,26 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div >
-              <div class="annee" id="movie-year"></div>
-              <div class="type" id="movie-genres"></div>
-              <div class="age" id="movie-rated"></div>
-              <div class="duree" id="movie-duration"></div>
-              <div class="pays" id="movie-countries"></div>
-              <div class="imdb_score" id="movie-imdb"></div>
+            <!-- bloc du haut = 2 colonnes en desktop -->
+            <div class="modal_conteneur_1" >
+              <!-- colonne gauche : infos texte -->
+              <div class="box_modal_1">
+                <div class="annee" id="movie-year"></div>
+                <div class="type" id="movie-genres"></div>
+                <div class="age" id="movie-rated"></div>
+                <div class="duree" id="movie-duration"></div>
+                <div class="pays" id="movie-countries"></div>
+                <div class="box_office" id="movie-box-office"></div>
+                <div class="director" id="movie-director"></div>
+                <div class="info-line" id="movie-imdb"></div>
+              </div>
+              <!-- colonne droite : affiche -->
+              <div class="imdb_score box_modal_1 box_modal_img">
+                <img src="" alt="Affiche du film" id="movie-image" />
+              </div>
             </div>
-            <div>  
-              <div class="box_office" id="movie-box-office"></div>
-              <div class="director" id="movie-director"></div>
-              <img src="" alt="Affiche du film" id="movie-image" />
+            <!-- bloc du bas = résumé + acteurs -->
+            <div class="modal_conteneur_2">  
               <div class="summary" id="movie-summary"></div>
               <div class="actors" id="movie-actors"></div>
             </div>
@@ -438,6 +446,7 @@
   </main>
 
   <footer class="tbd">
+  <div class="my-5"></div>
   </footer>
   <!-- Bootstrap 5 JS (Popper inclus) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
