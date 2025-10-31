@@ -15,6 +15,11 @@ h2 {
   padding: 3em;
 }
 
+.modal-content {
+  background-color:#1C1C1C; 
+  color:#DAA520;
+  font-family:monospace;  
+}
 
 
 /* gestion de l'entête du site */
@@ -253,3 +258,4 @@ h2 {
   align-items: center; /* Centre les éléments horizontalement */
   padding: 3rem;
 }
+

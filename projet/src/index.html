@@ -33,14 +33,15 @@
             src="https://picsum.photos/400/550?random=1"
             class=""
             alt="Affiche du film"
+            id="best-movie-img"
           />
         </div>
         <!-- Contenu à droite -->
         <div class="box_title ">
           <!-- Titre du film -->
-          <h4 class="text-start my-5">The Best Movi</h4>
+          <h4 class="text-start my-5" id="best-movie-title">The Best Movi</h4>
           <!-- Description du film -->
-          <p class="">
+          <p id="best-movie-desc">
             Jeff “The Dude” Lebowski, pris pour un millionnaire du même nom, veut obtenir réparation
             pour son tapis abîmé et embarque ses amis de bowling dans l’aventure.
           </p>
@@ -52,6 +53,7 @@
               class="btn btn-primary" 
               data-bs-toggle="modal" 
               data-bs-target="#exampleModal"
+              id="best-movie-btn"
             >
               Détails
             </button>
@@ -401,7 +403,7 @@
     
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -410,21 +412,21 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="annee">🐸 Élément 1</div>
-            <div class="type">🦊 Élément 2</div>
-            <div class="age">🦄 Élément 3</div>
-            <div class="duree">🐶 Élément 4</div>
-            <div class="pays">🐨 Élément 5</div>
-            <img
-              src="https://picsum.photos/400/550?random=1"
-              class=""
-              alt="Affiche du film"
-            />
-            <div class="imdb_score">🐒 Élément 6</div>
-            <div class="box_office">🦊 Élément 7</div>
-            <div class="director">🦄 Élément 8</div>
-            <div class="summary">🐶 Élément 9</div>
-            <div class="actors">🐨 Élément 10</div>
+            <div >
+              <div class="annee" id="movie-year"></div>
+              <div class="type" id="movie-genres"></div>
+              <div class="age" id="movie-rated"></div>
+              <div class="duree" id="movie-duration"></div>
+              <div class="pays" id="movie-countries"></div>
+              <div class="imdb_score" id="movie-imdb"></div>
+            </div>
+            <div>  
+              <div class="box_office" id="movie-box-office"></div>
+              <div class="director" id="movie-director"></div>
+              <img src="" alt="Affiche du film" id="movie-image" />
+              <div class="summary" id="movie-summary"></div>
+              <div class="actors" id="movie-actors"></div>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
