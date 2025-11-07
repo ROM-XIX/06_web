@@ -15,11 +15,8 @@ h2 {
   padding: 3em;
 }
 
-
-
-
 /* gestion de l'entête du site */
-/* +++++++++++++++++++ */
+/* +++++++++++++++++++++++++++ */
 .bloc_title {
   display:flex;
   /* background: radial-gradient(circle,#f6cd26,#ac6b26,#563226,#331c17); */
@@ -40,7 +37,7 @@ h2 {
   background-size: cover;
 }
 
-/* gestion de Best Movi */
+/* gestion de Best Movie */
 .box_title {
   height: auto;
   align-items: center;
@@ -133,7 +130,7 @@ h2 {
 
 
 /* gestion de la grid d'affichage de chaque catégorie*/
-/* +++++++++++++++++++++++++++++++++++++++++ */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 /* Base : 1 colonne pour smartphone*/
 .conteneur { 

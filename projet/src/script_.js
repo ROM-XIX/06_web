@@ -18,7 +18,7 @@ function displayBestMovieHeader(movie) {
     imgEl.src = movie.image_url;
     imgEl.alt = movie.title;
 
-    // si l'image échoue à charger → image de secours
+    // si l'image échoue à charger on utilise l'image de secours
     imgEl.onerror = function () {
       this.onerror = null; // évite une boucle infinie si la 2e image échoue aussi
       this.src = '../images/erreur_404.jpg';
@@ -46,11 +46,11 @@ function fillBestMovieModal(movie) {
   const summaryEl = document.getElementById('movie-summary');
   const actorsEl = document.getElementById('movie-actors');
 
-  if (yearEl) yearEl.textContent = `Date de sortie : ${movie.date_published || movie.year || 'Non renseigné'}`;
-  if (genresEl) genresEl.textContent = `Genres : ${(movie.genres || []).join(', ')}`;
-  if (ratedEl) ratedEl.textContent = `Classification : ${movie.rated || 'Non renseignée'}`;
+  if (yearEl) yearEl.textContent = `Date de sortie : ${movie.date_published || movie.year || 'Non renseigné'}`; // opération logique
+  if (genresEl) genresEl.textContent = `Genres : ${(movie.genres || []).join(', ')}`; // on atten un tableau sinon on ajouté un tableau vide puis on transforme le tableau en string
+  if (ratedEl) ratedEl.textContent = `Classification : ${movie.rated || 'Non renseignée'}`; 
   if (durationEl) durationEl.textContent = `Durée : ${movie.duration ? movie.duration + ' min' : 'Non renseignée'}`;
-  if (countriesEl) countriesEl.textContent = `Pays : ${(movie.countries || []).join(', ')}`;
+  if (countriesEl) countriesEl.textContent = `Pays : ${(movie.countries || []).join(', ')}`; // on atten un tableau sinon on ajouté un tableau vide puis on transforme le tableau en string
   if (imgEl) {
     // affiche l'image principale
     imgEl.src = movie.image_url;
@@ -150,7 +150,7 @@ async function fetchBestByGenre(genreName, limit = 6) {
     results = results.concat(data.results);
     url = data.next;
   }
-  return results.slice(0, limit);
+  return results.slice(0, limit); // on coupe la liste de 0 à limit-1
 }
 
 
@@ -160,7 +160,7 @@ async function fetchBestByGenre(genreName, limit = 6) {
 async function fetchAllGenres() {
   let genres = [];
   let url = API_GENRES + '?page=1';
-
+  // on boucle sur la page suivant tantqu'il y en a une avec le while + url = data.next
   while (url) {
     const resp = await fetch(url);
     const data = await resp.json();
@@ -170,6 +170,9 @@ async function fetchAllGenres() {
   }
 
   // on renvoie juste les noms, sans doublons
+  // genres.map(g => g.name) extrait seulement les noms des genres
+  // new Set(...) supprime les doublons automatiquement
+  // [... ] retransforme le Set en tableau
   const names = [...new Set(genres.map(g => g.name))];
   return names.sort();
 }
@@ -182,10 +185,10 @@ function initButtons() {
   // smartphone
   document.querySelectorAll('.btn-plus1').forEach(btn => {
     const section = btn.closest('section');
-    let open = false;
+    let open = false; // indique si la section est ouverte (films affichés) ou fermée (films cachés).
     btn.addEventListener('click', () => {
       const hidden = section.querySelectorAll('.box_2, .box_3');
-      open = !open;
+      open = !open; // On inverse l’état, si fermé alolrs ouvrir, si ouvert alors fermer.
       hidden.forEach(el => {
         el.style.display = open ? 'block' : 'none';
       });
@@ -199,7 +202,7 @@ function initButtons() {
     let open = false;
     btn.addEventListener('click', () => {
       const hidden = section.querySelectorAll('.box_3'); // recupère toute les éléments box_3
-      open = !open;
+      open = !open; // On inverse l’état, si fermé alolrs ouvrir, si ouvert alors fermer.
       hidden.forEach(el => {
         el.style.display = open ? 'block' : 'none';
       });
@@ -214,17 +217,17 @@ function initButtons() {
 //    et recharger les 6 films de la section au clic
 // =====================================================
 async function initGenreDropdowns() {
-  // 1) on récupère les genres de l'API
+  // 1. on récupère les genres de l'API
   const genres = await fetchAllGenres();
 
-  // 2) on cible TOUS les menus dropdown de la page
-  // (dans ton HTML ils sont dans les sections dynamiques)
-  const dropdowns = document.querySelectorAll('.dropdown');
+  // 2. on cible TOUS les menus dropdown de la page
+  // dans le HTML ils sont dans les sections dynamiques
+  const dropdowns = document.querySelectorAll('.dropdown'); // menue déroulant
 
   dropdowns.forEach(drop => {
     const menu = drop.querySelector('.dropdown-menu'); // récupère un élément dropdown-menu
     const button = drop.querySelector('button.dropdown-toggle'); // récupère un élément dropdown-menu
-    if (!menu || !button) return;
+    if (!menu || !button) return; // controle que le bouton et le champs d'affichage de droite est présent
 
     // on vide d'abord le menu (pour enlever les "Action", "Comédie" en dur)
     menu.innerHTML = '';
@@ -240,7 +243,7 @@ async function initGenreDropdowns() {
 
       // clic sur un genre on recharge seulement la section du dropdown
       a.addEventListener('click', async (e) => {
-        e.preventDefault();
+        e.preventDefault(); //on empéche le rechargement de la page
 
         // mettre à jour le texte du bouton
         button.textContent = 'Genre : ' + genreName;
@@ -253,7 +256,7 @@ async function initGenreDropdowns() {
         const sectionId = section.id;
         // on va chercher les 6 meilleurs films de ce genre
         const movies = await fetchBestByGenre(genreName, 6);
-        // et on remplace les cartes de CETTE section uniquement
+        // et on remplace les cartes de CETTE section uniquement, on recharge seulement cette section
         addMoviToElement(sectionId, movies);
       });
 
@@ -267,7 +270,8 @@ async function initGenreDropdowns() {
 // =====================================================
 // 7. Lancement global
 // =====================================================
-//  addEventListenet - au chargement du Dom
+//  addEventListenet - au chargement du Dom on attends la page pas forcément les images
+//  async permet de faire des await pour attendre proprement le retour des fetch.
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     // 1) Meilleurs films globaux
@@ -325,5 +329,3 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Erreur lors du chargement des films :', err);
   }
 });
-
-addEventListener()
